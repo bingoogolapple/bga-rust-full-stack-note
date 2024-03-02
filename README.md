@@ -1,0 +1,82 @@
+# bga-rust-full-stack-note
+
+Rust 全栈开发学习笔记
+
+- [官网](https://www.rust-lang.org/zh-CN/learn/get-started)
+- 国内镜像代理: [RsProxy](https://rsproxy.cn)
+- 安装 Rust: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+- 安装完成后在 `~/.cargo/bin` 目录中包含以下命令
+
+  - [cargo](https://doc.rust-lang.org/cargo/index.html)
+    - Rust 的构建工具和包管理器
+    - 查看 Cargo 版本: `cargo --version`
+    - 创建新的二进制项目: `cargo new --bin rust-binary` 或 `cargo new rust-binary`
+    - 创建新的库项目: `cargo new --lib rust-library`
+    - 仅构建项目: 执行 `cargo build` 会生成 debug 模式的二进制可执行文件 `./target/debug/rust-binary`，然后执行 `./target/debug/rust-binary` 即可运行生成的可执行文件
+      - 执行 `cargo build -r` 会以 release 模式的生成二进制可执行文件 `./target/release/rust-binary`
+    - 构建并运行项目: `cargo run`
+    - 测试项目: `cargo test`
+    - 更新依赖库到最新版: `cargo update`
+    - 检查代码是否可编译: `cargo check` 该命令快速检查代码确保其可以编译，但并不产生二进制可执行文件
+    - 为项目构建文档: `cargo doc --open`
+    - 发布库到[crates.io](https://crates.io/): `cargo publish`，在 Rust 中，通常把包称作 crate
+  - cargo-miri
+  - [rust-analyzer](https://github.com/rust-lang/rust-analyzer)
+    - A Rust compiler front-end for IDEs
+    - 开发工具
+      - VS Code
+      - JetBrains 全家桶中的 [RustRover](https://www.jetbrains.com/rust/)
+    - VS Code 中的插件名称也叫 rust-analyzer
+  - rust-lldb
+  - [rustfmt](https://github.com/rust-lang/rustfmt)
+    - 用于自动格式化 Rust 代码
+  - [cargo-clippy](https://github.com/rust-lang/rust-clippy)
+    - 代码检查 lint 工具，通过静态分析，来检查代码中有问题或不符合指定规范的代码
+  - clippy-driver
+  - rust-gdb
+  - rustc
+    - 查看 rustc 版本: `rustc --version`
+    - 编译: 执行 `rustc src/main.rs` 后会生成二进制可执行文件 main，然后执行 `./main` 即可运行生成的可执行文件
+  - [rustup](https://rust-lang.github.io/rustup/)
+    - Rust 安装器和版本管理工具: 用于管理不同平台下的 Rust 构建版本并使其互相兼容， 支持安装由 Beta 和 Nightly 频道发布的版本，并支持其他用于交叉编译的编译版本
+    - 升级 Rust: `rustup update`
+    - 查看 rustup 版本: `rustup --version`
+    - 卸载 Rust: `rustup self uninstall`
+    - 查看本地文档: `rustup doc`
+  - cargo-fmt
+  - rls
+  - rust-gdbgui
+  - rustdoc
+    - 生成 API 文档，还可以通过 [docs.rs](https://docs.rs/) 在线获取公开的 crates 文档
+
+- 项目结构
+  - Cargo.toml: Rust 的清单文件，其中包含了项目的元数据和依赖库
+  - Cargo.lock: 由 Cargo 自动生成的，用于记录项目依赖的精确版本信息。当你构建项目时，Cargo 会查看 Cargo.lock 文件来确定应该使用哪个版本的依赖库。如果 Cargo.lock 文件不存在，Cargo 会在构建项目时创建它，并在其中记录当前使用的依赖库版本。如果 Cargo.lock 文件已经存在，Cargo 会使用文件中记录的版本，以确保构建的一致性。这意味着，当你首次构建项目时，Cargo 会解析 Cargo.toml 文件，下载依赖库的最新版本，并将这些信息记录在 Cargo.lock 文件中。在后续的构建中，即使依赖库发布了新版本，Cargo 也会继续使用 Cargo.lock 文件中记录的版本。如果你想更新依赖库到最新版本，你可以运行 cargo update 命令，这会使 Cargo 更新 Cargo.lock 文件中的版本信息
+  - src: 源码目录
+    - main.rs: 二进制项目入库文件
+    - lib.rs: 库项目入库文件
+  - target: 构建输出目录
+    - debug: 开发模式构建输出目录
+      - .fingerprint: TODO
+      - build: TODO
+      - deps: TODO
+      - examples: TODO
+      - incremental: TODO
+      - .cargo-lock: TODO
+      - rust-binary: TODO
+      - rust-binary.d: TODO
+      - librust_library.d: TODO
+      - librust_library.rlib: TODO
+    - release: 发布模式构建输出目录
+      - .fingerprint: TODO
+      - build: TODO
+      - deps: TODO
+      - examples: TODO
+      - incremental: TODO
+      - .cargo-lock: TODO
+      - rust-binary: TODO
+      - rust-binary.d: TODO
+      - librust_library.d: TODO
+      - librust_library.rlib: TODO
+    - .rustc_info.json: TODO
+    - CACHEDIR.TAG: TODO
