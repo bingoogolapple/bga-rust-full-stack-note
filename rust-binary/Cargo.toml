@@ -5,5 +5,13 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+# 执行 cargo add rand 添加依赖
+# 执行 cargo rm rand 删除依赖
 [dependencies]
 rand = "0.8.5"
+
+# 只在构建项目是需要的依赖项，cargo add --build rand
+[build-dependencies]
+
+# 只在开发时需要的依赖项，cargo add --dev rand
+[dev-dependencies]

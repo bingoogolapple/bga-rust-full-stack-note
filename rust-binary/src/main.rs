@@ -7,8 +7,44 @@ use std::io;
 // Rng 是一个 trait，它定义了随机数生成器应实现的方法，想使用这些方法的话，此 trait 必须在作用域中
 use rand::Rng;
 
-// Rust 程序的入口函数，程序执行时会首先运行这个函数
+/// Rust 程序的入口函数，程序执行时会首先运行这个函数
 fn main() {
+    // test_guess();
+    test_println();
+}
+
+fn test_println() {
+    // 通常情况下，`{}` 会被任意变量内容所替换，变量内容会转化成字符串
+    println!("{} days", 31);
+    // 可以使用位置参数，println! 会检查使用到的位置参数数量是否正确，写代码时需保证数量一致
+    println!("{0}, this is {1}. {1}, this is {0}", "Alice", "Bob");
+
+    // 可以使用命名参数，println! 会检查使用到的命名参数数量是否正确，写代码时需保证数量一致
+    println!(
+        "{subject} {verb} {object} {subject}",
+        object = "objectvalue",
+        subject = "subjectvalue",
+        verb = "verbvalue"
+    );
+
+    let a = 2;
+    let b = 3;
+    // 可以直接在 {} 内写变量，还可以与位置参数、命名参数结合着使用
+    println!("{a} + {b} = {}", a + b);
+    println!("{a} + {b} = {ab}", ab = a + b);
+    println!("{a} + {b} = {0}", a + b);
+
+    // 可以按指定宽度来右对齐文本，下面语句输出 "     1"，5 个空格后面连着 1
+    println!("{number:>width$}", number = 1, width = 6);
+
+    // 可以在数字左边补 0，下面语句输出 "000001"
+    println!("{number:>0width$}", number = 1, width = 6);
+
+    // 可以在 `:` 后面指定特殊的格式
+    println!("{} of {:b} people know binary, the other half don't", 1, 2);
+}
+
+fn test_guess() {
     // println! 是 Rust 的一个宏，用于打印输出。当看到一个 !，则意味着调用的是宏而不是普通的函数
     println!("Guess the number!");
 

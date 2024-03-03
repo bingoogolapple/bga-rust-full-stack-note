@@ -20,6 +20,8 @@ Rust 全栈开发学习笔记
     - 检查代码是否可编译: `cargo check` 该命令快速检查代码确保其可以编译，但并不产生二进制可执行文件
     - 为项目构建文档: `cargo doc --open`
     - 发布库到[crates.io](https://crates.io/): `cargo publish`，在 Rust 中，通常把包称作 crate
+    - 向当前 Rust 项目的 Cargo.toml 文件添加新的依赖: `cargo add cratename`
+    - 全局安装 Rust 二进制文件: `cargo install cratename`
   - cargo-miri
   - [rust-analyzer](https://github.com/rust-lang/rust-analyzer)
     - A Rust compiler front-end for IDEs
@@ -36,13 +38,15 @@ Rust 全栈开发学习笔记
   - rust-gdb
   - rustc
     - 查看 rustc 版本: `rustc --version`
-    - 编译: 执行 `rustc src/main.rs` 后会生成二进制可执行文件 main，然后执行 `./main` 即可运行生成的可执行文件
+    - 编译生成二进制文件: 执行 `rustc -o main src/main.rs` 后会生成二进制可执行文件 main，然后执行 `./main` 即可运行生成的可执行文件
+    - 编译生成库文件：执行 `rustc --crate-type lib src/lib.rs` 后会生成库文件 liblib.rlib
   - [rustup](https://rust-lang.github.io/rustup/)
     - Rust 安装器和版本管理工具: 用于管理不同平台下的 Rust 构建版本并使其互相兼容， 支持安装由 Beta 和 Nightly 频道发布的版本，并支持其他用于交叉编译的编译版本
     - 升级 Rust: `rustup update`
     - 查看 rustup 版本: `rustup --version`
     - 卸载 Rust: `rustup self uninstall`
-    - 查看本地文档: `rustup doc`
+    - 打开本地的 Rust 文档: `rustup doc`
+    - 显示当前安装的 Rust 版本信息（包括默认的工具链、安装的工具链列表、默认的目标平台等）: `rustup show`
   - cargo-fmt
   - rls
   - rust-gdbgui
@@ -78,5 +82,6 @@ Rust 全栈开发学习笔记
       - rust-binary.d: TODO
       - librust_library.d: TODO
       - librust_library.rlib: TODO
+    - doc: 执行 `cargo doc` 后生成的项目文档
     - .rustc_info.json: TODO
     - CACHEDIR.TAG: TODO
